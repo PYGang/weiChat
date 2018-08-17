@@ -52,6 +52,10 @@ public class main extends HttpServlet {
 		String timestamp = request.getParameter("timestamp");
 		String nonce = request.getParameter("nonce");
 		String echostr = request.getParameter("echostr");
+		if(signature==""||signature==null){
+			out.println("hello word");
+			return;
+		}
 		try {
 			// 通过检验signature对请求进行校验，若校验成功则原样返回echostr，否则接入失败
 			if (CheckUtil.checkSignatrue(signature, timestamp, nonce)) {
